@@ -5,6 +5,25 @@
 // 3: Buzz
 // 0: None
 
+int binarySearch(int arr[], int key) {
+    int start = 0;
+    int end = sizeof(arr);
+    
+    while (start <= end) {
+        int middle = (start + end) / 2;
+        
+        if (arr[middle] == key) {
+            return middle;
+        } else if (key < arr[middle]) {
+            end = middle - 1;
+        } else {
+            start = middle + 1;
+        }
+    }
+    
+    return -1;
+}
+
 int fizzBuzz(int number) {
     if (number == 0) {
         printf("%d \n", number);
@@ -61,6 +80,13 @@ void createSimpleFizzBuzz(int val) {
 
 int main() {
     createSimpleFizzBuzz(200);
+    
+     int arr[] = { 2, 3, 4, 10, 40 };
+     int x = 10;
+    
+     int result = binarySearch(arr, x);
+      (result == -1) ? printf("Element is not present in array \n")
+                    : printf("Element is present at index %d \n", result);
     
     return 0;
 }
